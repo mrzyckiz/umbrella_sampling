@@ -1,0 +1,97 @@
+integrator              = md
+dt                      = 0.002
+tinit =0
+nsteps                  = 250000
+nstxout                 = 0
+nstvout                 = 0
+nstfout                 = 00
+nstcalcenergy           = 100
+nstenergy               = 5000
+nstlog                  = 5000
+nstxout-compressed      = 2000
+;
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.4
+coulombtype             = pme
+rcoulomb                = 1.4
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.2
+rvdw                    = 1.4
+;
+tcoupl                  = Nose-Hoover
+tc_grps                 = MEMB SOLV F2B
+tau_t                   = 1.0 1.0 1.0
+ref_t                   = 303.15 303.15 303.15 
+;
+pcoupl                  = Parrinello-Rahman
+pcoupltype              = semiisotropic
+tau_p                   = 5.0
+compressibility         = 4.5e-5 4.5e-5
+ref_p                   = 1.0 1.0
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps               = MEMB SOLV F2B
+;
+refcoord_scaling        = com
+
+;Pull code
+;pull                    = yes
+;pull_ncoords            = 1         ; only one reaction coordinate
+;pull_ngroups            = 1         ; two groups defining one reaction coordinate
+;pull_group2_name        = OCT
+;pull_group1_name        = MEMB_C16
+;pull_coord1_type        = umbrella  ; harmonic potential
+;pull_coord1_geometry    = distance  ; simple distance increase
+;pull-coord1-vec         = 0.0 0.0 -0.2
+;pull_coord1_dim         = N N Y     ; pull along z
+;pull_coord1_groups      = 1 2      ; groups 1 (Chain A) and 2 (Chain B) define the reaction coordinate
+;pull_coord1_start       = yes       ; define initial COM distance > 0
+;pull_coord1_rate        = 0.01      ; 0.01 nm per ps = 10 nm per ns
+;pull_coord1_k           = 1000      ; kJ mol^-1 nm^-2
+
+pull                    = yes
+pull-coord1-type         = umbrella
+pull-coord1-geometry     = distance
+pull-coord1-origin = 0 0 0
+pull_ncoords            = 1 
+pull-ngroups             = 2
+pull_group1_name        = MEMB_C16
+pull_group2_name        = F2B
+pull-coord1-groups       =1 2
+pull_coord1_start       = no
+pull_coord1_dim         = N N Y   
+pull-coord1-k            = 5000.0
+pull-coord1-rate         = 0.01
+;pull-coord1-init         = 2.108
+;pull-print-ref-value     =yes
+pull_print_com1 =yes
+pull_print_components	=yes
+
+
+;pull                     = yes
+;pull-coord1-type         = umbrella
+;pull_geometry            = distance
+;pull_dim                 = N N Y
+;pull_start               = yes
+;pull-ncoords             = 1
+;pull_ngroups             = 1
+;pull_group0              = MEMB_P
+;pull_weights0            = 
+;pull_pbcatom0            = 0
+;pull_group1              = F2B
+;pull_weights1            = 
+;pull_pbcatom1            = 0
+;pull_vec1                = 0.0 0.0 -1.0
+;pull_init1               = 2.6
+;pull_rate1               = 0.01
+;pull_k1                  = 2000
+;pull_kB1                 = 0
+
+
