@@ -4,6 +4,6 @@
 4. Aby powyciagac odpowiednie frame skorzystaj ze skryptu setupUmbrella.py ktory pozwoli na ybranie framow co 0.2nm lub 0.1nm.
 ./script.py summary_distances.dat -0.1 run-umbrella.sh &>plik.txt
 5. Dostosuj skrypt npt_umbrella do wybranych framow i przejrzyj .mdp o tej samej nazwie.
-6. Dostosuj skrypt prod_sh czyli finalna produkcje umbrella.
+6. Dostosuj skrypt prod_sh czyli finalna produkcje umbrella.(50-100ns)
 7. Stworz dwa pliki dat jeden z umbrella.tpr i drugi z umbrella_pullf.xvg
 8. gmx wham -it tpr_files.dat -if pullf-files.dat -o -hist -unit kCal
