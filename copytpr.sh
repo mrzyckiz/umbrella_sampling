@@ -1,15 +1,18 @@
-for i in 17 39 47 57 67 83 95 105 119 132 152 168 185 202 217 231 250 259 274 277 289
+for i in 3 5 8 12 15 17 20 23 28 31 43 46 50 52 53 56 58 63 65 71 77 84 89 93 98 104 109 114 120 124
 do
 cd frame${i}
-cp umbrella${i}.tpr umbrella${i}_pullf.xvg /home/rzycki/POPC/charmm-gui-1338853862/gromacs/OCT_single/PMF_IONS/wham
+cp umbrella${i}.tpr umbrella${i}_pullf.xvg /home/extra_storage/rzycki_extra/Fabimycin_umbrella/wham
 cd ..
 done
 
-for i in 17 39 47 57 67 83 95 105 119 132 152 168 185 202 217 231 250 259 274 277 289
+cd wham/
+for i in 3 5 8 12 15 17 20 23 28 31 43 46 50 52 53 56 58 63 65 71 77 84 89 93 98 104 109 114 120 124
 do
 	echo "umbrella${i}.tpr" >> summary_tpr.dat
 	echo "umbrella${i}_pullf.xvg" >> summary_pullf.dat
 done
 
-cp summary_tpr.dat summary_pullf.dat /home/rzycki/POPC/charmm-gui-1338853862/gromacs/OCT_single/PMF_IONS/wham
+gmx wham -it summary_tpr.dat -if summary_pullf.dat -o hist -unit kCal
+
+#cp summary_tpr.dat summary_pullf.dat /home/extra_storage/rzycki_extra/Fabimycin_umbrella/wham
 cd ..

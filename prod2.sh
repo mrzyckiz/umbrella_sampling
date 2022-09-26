@@ -7,7 +7,7 @@ do
 	gmx mdrun -deffnm umbrella${i} -gpu_id 1 -nt 16 -pin auto 
 	#continue
 	sleep 5
-#cp umbrella${i}.tpr umbrella${i}_pullf.xvg /home/rzycki/POPC/charmm-gui-1338853862/gromacs/OCT_single/PMF/wham
+cp umbrella${i}.tpr umbrella${i}_pullf.xvg $PWD/wham
 	cd ..
 done
 

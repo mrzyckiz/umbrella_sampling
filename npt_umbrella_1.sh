@@ -1,11 +1,11 @@
-for i in 63 68
+for i in 74
 do
 mkdir frame${i}
 cp conf${i}.gro /home/extra_storage/rzycki_extra/Fabimycin_umbrella/frame${i}
 cd frame${i}
 gmx grompp -f ../short_npt_umbrella.mdp -c ../conf${i}.gro -r ../conf${i}.gro -p ../topol.top -n ../index.ndx -o npt_umb${i}.tpr
-gmx mdrun -deffnm npt_umb${i} -gpu_id 1
-#sleep 3m
+gmx mdrun -deffnm npt_umb${i} -gpu_id 0 
+#sleep 4m
 cd ..
 done
 
