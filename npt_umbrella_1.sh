@@ -1,7 +1,7 @@
 for i in 74
 do
 mkdir frame${i}
-cp conf${i}.gro /home/extra_storage/rzycki_extra/Fabimycin_umbrella/frame${i}
+cp conf${i}.gro $PWD/frame${i}
 cd frame${i}
 gmx grompp -f ../short_npt_umbrella.mdp -c ../conf${i}.gro -r ../conf${i}.gro -p ../topol.top -n ../index.ndx -o npt_umb${i}.tpr
 gmx mdrun -deffnm npt_umb${i} -gpu_id 0 

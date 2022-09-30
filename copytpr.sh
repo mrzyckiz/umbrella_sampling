@@ -1,7 +1,8 @@
+echo $PWD
 for i in 3 5 8 12 15 17 20 23 28 31 43 46 50 52 53 56 58 63 65 71 77 84 89 93 98 104 109 114 120 124
 do
 cd frame${i}
-cp umbrella${i}.tpr umbrella${i}_pullf.xvg /home/extra_storage/rzycki_extra/Fabimycin_umbrella/wham
+cp umbrella${i}.tpr umbrella${i}_pullf.xvg $OLDPWD/wham
 cd ..
 done
 
